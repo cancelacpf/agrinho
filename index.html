@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AgriCalc | Área + Sementes para Plantio</title>
+    <title>AgriCalc Pro | Área + Sementes + Irrigação</title>
     <style>
         * {
             margin: 0;
@@ -51,10 +51,10 @@
         }
 
         .header h1::after {
-            content: "🌱";
+            content: "💧";
             font-size: 2.5rem;
             background: none;
-            color: #4a784a;
+            color: #2c7da0;
         }
 
         .sub {
@@ -71,7 +71,7 @@
 
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
             gap: 2rem;
             margin-bottom: 2rem;
         }
@@ -144,33 +144,48 @@
             background: #e6f1e0;
             border-radius: 1.4rem;
             padding: 0.8rem 1rem;
-            margin: 1.2rem 0 0.5rem;
+            margin: 0.8rem 0 0.5rem;
             text-align: center;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #1d572f;
             border: 1px solid #bddba8;
         }
 
         .result-area span {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: 800;
             color: #1a6e38;
         }
 
-        .seed-result {
+        .seed-result, .irrigation-result {
             background: #f5f0d7;
             border-radius: 1.2rem;
             padding: 0.7rem;
-            margin-top: 0.8rem;
+            margin-top: 0.6rem;
             text-align: center;
-            font-size: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .seed-result {
             border-left: 4px solid #d4a11e;
+        }
+
+        .irrigation-result {
+            border-left: 4px solid #2c7da0;
+            background: #e3f0f5;
+        }
+
+        .seed-result strong, .irrigation-result strong {
+            font-size: 1.1rem;
         }
 
         .seed-result strong {
             color: #b45f06;
-            font-size: 1.2rem;
+        }
+
+        .irrigation-result strong {
+            color: #1f6d8a;
         }
 
         .unit-note {
@@ -317,8 +332,8 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>AgriCalc · Área & Sementes</h1>
-        <div class="sub">🌱 Calcule a área e descubra quantas sementes plantar 🌽</div>
+        <h1>AgriCalc Pro · Área + Sementes + Irrigação</h1>
+        <div class="sub">🌱 Calcule área, sementes e a quantidade de água para irrigar sua lavoura 💧</div>
     </div>
 
     <div class="grid-cards">
@@ -336,21 +351,24 @@
             <div class="input-group">
                 <label>🌾 Cultura:</label>
                 <select id="rectCrop">
-                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
-                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
-                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
-                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
-                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                    <option value="milho">🌽 Milho (55.000 sementes/ha | 500 mm água/ciclo)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha | 450 mm água/ciclo)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha | 400 mm água/ciclo)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha | 350 mm água/ciclo)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha | 700 mm água/ciclo)</option>
                 </select>
             </div>
-            <button id="calcRect">🔢 Calcular Área + Sementes</button>
+            <button id="calcRect">🔢 Calcular Tudo</button>
             <div class="result-area" id="rectResult">
                 Área: <span>0,00</span> m²
             </div>
             <div class="seed-result" id="rectSeed">
                 🌱 <strong>0</strong> sementes necessárias
             </div>
-            <div class="unit-note">↪ 1 hectare = 10.000 m² | Base: sementes por hectare padrão</div>
+            <div class="irrigation-result" id="rectIrrigation">
+                💧 <strong>0</strong> litros de água por ciclo
+            </div>
+            <div class="unit-note">↪ 1 hectare = 10.000 m² | Irrigação baseada na necessidade hídrica da cultura</div>
         </div>
 
         <!-- Triângulo -->
@@ -367,19 +385,22 @@
             <div class="input-group">
                 <label>🌾 Cultura:</label>
                 <select id="triCrop">
-                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
-                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
-                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
-                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
-                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                    <option value="milho">🌽 Milho (55.000 sementes/ha | 500 mm água/ciclo)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha | 450 mm água/ciclo)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha | 400 mm água/ciclo)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha | 350 mm água/ciclo)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha | 700 mm água/ciclo)</option>
                 </select>
             </div>
-            <button id="calcTri">🌾 Calcular Área + Sementes</button>
+            <button id="calcTri">🌾 Calcular Tudo</button>
             <div class="result-area" id="triResult">
                 Área: <span>0,00</span> m²
             </div>
             <div class="seed-result" id="triSeed">
                 🌱 <strong>0</strong> sementes necessárias
+            </div>
+            <div class="irrigation-result" id="triIrrigation">
+                💧 <strong>0</strong> litros de água por ciclo
             </div>
         </div>
 
@@ -393,19 +414,22 @@
             <div class="input-group">
                 <label>🌾 Cultura:</label>
                 <select id="circleCrop">
-                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
-                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
-                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
-                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
-                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                    <option value="milho">🌽 Milho (55.000 sementes/ha | 500 mm água/ciclo)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha | 450 mm água/ciclo)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha | 400 mm água/ciclo)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha | 350 mm água/ciclo)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha | 700 mm água/ciclo)</option>
                 </select>
             </div>
-            <button id="calcCircle">💧 Calcular Área + Sementes</button>
+            <button id="calcCircle">💧 Calcular Tudo</button>
             <div class="result-area" id="circleResult">
                 Área: <span>0,00</span> m²
             </div>
             <div class="seed-result" id="circleSeed">
                 🌱 <strong>0</strong> sementes necessárias
+            </div>
+            <div class="irrigation-result" id="circleIrrigation">
+                💧 <strong>0</strong> litros de água por ciclo
             </div>
         </div>
 
@@ -427,19 +451,22 @@
             <div class="input-group">
                 <label>🌾 Cultura:</label>
                 <select id="trapCrop">
-                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
-                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
-                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
-                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
-                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                    <option value="milho">🌽 Milho (55.000 sementes/ha | 500 mm água/ciclo)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha | 450 mm água/ciclo)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha | 400 mm água/ciclo)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha | 350 mm água/ciclo)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha | 700 mm água/ciclo)</option>
                 </select>
             </div>
-            <button id="calcTrap">🌽 Calcular Área + Sementes</button>
+            <button id="calcTrap">🌽 Calcular Tudo</button>
             <div class="result-area" id="trapResult">
                 Área: <span>0,00</span> m²
             </div>
             <div class="seed-result" id="trapSeed">
                 🌱 <strong>0</strong> sementes necessárias
+            </div>
+            <div class="irrigation-result" id="trapIrrigation">
+                💧 <strong>0</strong> litros de água por ciclo
             </div>
         </div>
     </div>
@@ -469,36 +496,57 @@
             <div style="font-size:0.7rem; margin-top: 8px; text-align:center;">⚡ 1 ha = 10.000 m² | 1 alq paulista = 24.200 m² | 1 alq mineiro = 48.400 m²</div>
         </div>
         <div class="tips-box">
-            <h3>🌿 Dicas para o Agricultor</h3>
+            <h3>🌿💧 Dicas para o Agricultor</h3>
             <ul>
                 <li>✅ <strong>Recomendação de sementes</strong>: Milho: 50-60 mil sementes/ha • Soja: 300-350 mil plantas/ha</li>
-                <li>💧 <strong>Irrigação por pivô</strong>: área circular com raio típico de 300 a 500 metros → até 78,5 hectares.</li>
-                <li>📊 <strong>Planejamento de sementes</strong>: use a área calculada para comprar a quantidade exata, evitando desperdício.</li>
+                <li>💧 <strong>Necessidade hídrica</strong>: Milho ~500 mm/ciclo, Algodão ~700 mm/ciclo (1 mm = 10.000 L/ha)</li>
+                <li>📊 <strong>Planejamento de irrigação</strong>: 1 mm de chuva/irrigação = 10.000 litros por hectare</li>
                 <li>🧑‍🌾 <strong>Divisão de talhões</strong>: formas trapezoidais são comuns em terrenos com curvas de nível.</li>
-                <li>🌱 <strong>Taxa de semeadura</strong>: os valores consideram densidade média; ajuste conforme recomendação técnica local.</li>
+                <li>🌱 <strong>Economize água</strong>: sistemas de gotejamento podem reduzir consumo em até 50%.</li>
             </ul>
         </div>
     </div>
     <div class="footer">
-        🌾 AgriCalc · Calcule área e quantidade de sementes para sua lavoura | Dados baseados em média nacional.
+        🌾 AgriCalc Pro · Calcule área, sementes e água necessária para irrigação | Dados baseados em médias nacionais.
     </div>
 </div>
 
 <script>
-    // Dicionário de sementes por hectare (valores médios)
-    const sementesPorHa = {
-        milho: 55000,
-        soja: 320000,
-        feijao: 180000,
-        trigo: 250000,
-        algodao: 80000
+    // Dicionário de sementes por hectare e necessidade hídrica (mm por ciclo)
+    const culturasData = {
+        milho: { sementes: 55000, aguaMm: 500 },
+        soja: { sementes: 320000, aguaMm: 450 },
+        feijao: { sementes: 180000, aguaMm: 400 },
+        trigo: { sementes: 250000, aguaMm: 350 },
+        algodao: { sementes: 80000, aguaMm: 700 }
     };
 
-    // Função para calcular sementes com base na área (m²) e cultura
+    // Função para calcular sementes
     function calcularSementes(areaM2, cultura) {
         let areaHa = areaM2 / 10000;
-        let sementes = areaHa * sementesPorHa[cultura];
+        let sementes = areaHa * culturasData[cultura].sementes;
         return Math.round(sementes);
+    }
+
+    // Função para calcular água necessária (litros)
+    // 1 mm de lâmina d'água sobre 1 hectare = 10.000 litros
+    // Logo: litros = areaHa * aguaMm * 10000
+    function calcularAguaLitros(areaM2, cultura) {
+        let areaHa = areaM2 / 10000;
+        let aguaMm = culturasData[cultura].aguaMm;
+        let litros = areaHa * aguaMm * 10000;
+        return Math.round(litros);
+    }
+
+    // Formatar litros para exibição (milhões, milhares)
+    function formatarLitros(litros) {
+        if (litros >= 1000000) {
+            return (litros / 1000000).toFixed(2) + " milhões";
+        }
+        if (litros >= 1000) {
+            return (litros / 1000).toFixed(1) + " mil";
+        }
+        return litros.toString();
     }
 
     // Atualiza conversor de área
@@ -527,16 +575,25 @@
 
     let ultimaAreaM2 = 10000;
 
-    function mostrarResultadoComSementes(elementIdArea, elementIdSeed, areaM2, cultura) {
+    function mostrarResultadosCompletos(elementIdArea, elementIdSeed, elementIdIrrigation, areaM2, cultura) {
         const spanEl = document.querySelector(`#${elementIdArea} span`);
         if (spanEl) {
             spanEl.innerText = areaM2.toFixed(2);
         }
+        
         const sementes = calcularSementes(areaM2, cultura);
         const seedDiv = document.getElementById(elementIdSeed);
         if (seedDiv) {
             seedDiv.innerHTML = `🌱 <strong>${sementes.toLocaleString('pt-BR')}</strong> sementes necessárias`;
         }
+        
+        const litros = calcularAguaLitros(areaM2, cultura);
+        const irrigationDiv = document.getElementById(elementIdIrrigation);
+        if (irrigationDiv) {
+            let litrosFormatado = formatarLitros(litros);
+            irrigationDiv.innerHTML = `💧 <strong>${litros.toLocaleString('pt-BR')}</strong> litros <span style="font-size:0.8rem;">(${litrosFormatado})</span><br><span style="font-size:0.7rem;">${culturasData[cultura].aguaMm} mm de lâmina d'água por ciclo</span>`;
+        }
+        
         ultimaAreaM2 = areaM2;
         atualizarConversorArea(ultimaAreaM2);
     }
@@ -549,7 +606,7 @@
         if (isNaN(largura)) largura = 0;
         let area = comprimento * largura;
         let cultura = document.getElementById('rectCrop').value;
-        mostrarResultadoComSementes('rectResult', 'rectSeed', area, cultura);
+        mostrarResultadosCompletos('rectResult', 'rectSeed', 'rectIrrigation', area, cultura);
     }
 
     // --- Triângulo ---
@@ -560,7 +617,7 @@
         if (isNaN(altura)) altura = 0;
         let area = (base * altura) / 2;
         let cultura = document.getElementById('triCrop').value;
-        mostrarResultadoComSementes('triResult', 'triSeed', area, cultura);
+        mostrarResultadosCompletos('triResult', 'triSeed', 'triIrrigation', area, cultura);
     }
 
     // --- Círculo ---
@@ -569,7 +626,7 @@
         if (isNaN(raio)) raio = 0;
         let area = Math.PI * raio * raio;
         let cultura = document.getElementById('circleCrop').value;
-        mostrarResultadoComSementes('circleResult', 'circleSeed', area, cultura);
+        mostrarResultadosCompletos('circleResult', 'circleSeed', 'circleIrrigation', area, cultura);
     }
 
     // --- Trapézio ---
@@ -582,7 +639,7 @@
         if (isNaN(altura)) altura = 0;
         let area = ((baseMaior + baseMenor) * altura) / 2;
         let cultura = document.getElementById('trapCrop').value;
-        mostrarResultadoComSementes('trapResult', 'trapSeed', area, cultura);
+        mostrarResultadosCompletos('trapResult', 'trapSeed', 'trapIrrigation', area, cultura);
     }
 
     // Eventos dos botões
@@ -591,27 +648,27 @@
     document.getElementById('calcCircle').addEventListener('click', calcularCirculo);
     document.getElementById('calcTrap').addEventListener('click', calcularTrapezio);
 
-    // Inicialização com valores padrão e exibição inicial
+    // Inicialização com valores padrão
     function inicializarCalculosPadrao() {
         let comp = parseFloat(document.getElementById('rectLength').value);
         let larg = parseFloat(document.getElementById('rectWidth').value);
         if (!isNaN(comp) && !isNaN(larg)) {
             let areaRect = comp * larg;
             let culturaRect = document.getElementById('rectCrop').value;
-            mostrarResultadoComSementes('rectResult', 'rectSeed', areaRect, culturaRect);
+            mostrarResultadosCompletos('rectResult', 'rectSeed', 'rectIrrigation', areaRect, culturaRect);
         }
         let baseT = parseFloat(document.getElementById('triBase').value);
         let altT = parseFloat(document.getElementById('triHeight').value);
         if (!isNaN(baseT) && !isNaN(altT)) {
             let areaTri = (baseT * altT) / 2;
             let culturaTri = document.getElementById('triCrop').value;
-            mostrarResultadoComSementes('triResult', 'triSeed', areaTri, culturaTri);
+            mostrarResultadosCompletos('triResult', 'triSeed', 'triIrrigation', areaTri, culturaTri);
         }
         let raioCirc = parseFloat(document.getElementById('circleRadius').value);
         if (!isNaN(raioCirc)) {
             let areaCirc = Math.PI * raioCirc * raioCirc;
             let culturaCirc = document.getElementById('circleCrop').value;
-            mostrarResultadoComSementes('circleResult', 'circleSeed', areaCirc, culturaCirc);
+            mostrarResultadosCompletos('circleResult', 'circleSeed', 'circleIrrigation', areaCirc, culturaCirc);
         }
         let bMaior = parseFloat(document.getElementById('trapBaseMaior').value);
         let bMenor = parseFloat(document.getElementById('trapBaseMenor').value);
@@ -619,7 +676,7 @@
         if (!isNaN(bMaior) && !isNaN(bMenor) && !isNaN(altTrap)) {
             let areaTrap = ((bMaior + bMenor) * altTrap) / 2;
             let culturaTrap = document.getElementById('trapCrop').value;
-            mostrarResultadoComSementes('trapResult', 'trapSeed', areaTrap, culturaTrap);
+            mostrarResultadosCompletos('trapResult', 'trapSeed', 'trapIrrigation', areaTrap, culturaTrap);
         }
         let areaMain = (comp * larg);
         if (!isNaN(areaMain)) ultimaAreaM2 = areaMain;
@@ -651,16 +708,14 @@
             if (el) el.addEventListener('keypress', (e) => { if (e.key === 'Enter') calcularTrapezio(); });
         });
 
-        // também permite alterar cultura e recalcular automaticamente? farei via botão, mas ao trocar cultura o resultado permanece? melhor manter botão.
-        // Adicional: quando mudar a cultura, se quiser atualizar com a área já exibida, podemos adicionar auto, mas vou manter simplicidade.
-        // bônus: listeners para updates de cultura com base na área atual
+        // Listeners para mudança de cultura - atualiza automaticamente
         const rectCrop = document.getElementById('rectCrop');
         rectCrop.addEventListener('change', () => {
             let comp = parseFloat(document.getElementById('rectLength').value);
             let larg = parseFloat(document.getElementById('rectWidth').value);
             if (!isNaN(comp) && !isNaN(larg)) {
                 let area = comp * larg;
-                mostrarResultadoComSementes('rectResult', 'rectSeed', area, rectCrop.value);
+                mostrarResultadosCompletos('rectResult', 'rectSeed', 'rectIrrigation', area, rectCrop.value);
             }
         });
         const triCrop = document.getElementById('triCrop');
@@ -669,7 +724,7 @@
             let alt = parseFloat(document.getElementById('triHeight').value);
             if (!isNaN(base) && !isNaN(alt)) {
                 let area = (base * alt) / 2;
-                mostrarResultadoComSementes('triResult', 'triSeed', area, triCrop.value);
+                mostrarResultadosCompletos('triResult', 'triSeed', 'triIrrigation', area, triCrop.value);
             }
         });
         const circleCrop = document.getElementById('circleCrop');
@@ -677,7 +732,7 @@
             let raio = parseFloat(document.getElementById('circleRadius').value);
             if (!isNaN(raio)) {
                 let area = Math.PI * raio * raio;
-                mostrarResultadoComSementes('circleResult', 'circleSeed', area, circleCrop.value);
+                mostrarResultadosCompletos('circleResult', 'circleSeed', 'circleIrrigation', area, circleCrop.value);
             }
         });
         const trapCrop = document.getElementById('trapCrop');
@@ -687,7 +742,7 @@
             let alt = parseFloat(document.getElementById('trapHeight').value);
             if (!isNaN(bMaior) && !isNaN(bMenor) && !isNaN(alt)) {
                 let area = ((bMaior + bMenor) * alt) / 2;
-                mostrarResultadoComSementes('trapResult', 'trapSeed', area, trapCrop.value);
+                mostrarResultadosCompletos('trapResult', 'trapSeed', 'trapIrrigation', area, trapCrop.value);
             }
         });
     });
