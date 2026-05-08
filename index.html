@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AgriCalc | Calculadora de Áreas para Agricultura</title>
+    <title>AgriCalc | Área + Sementes para Plantio</title>
     <style>
         * {
             margin: 0;
@@ -19,16 +19,14 @@
             color: #1e3a2f;
         }
 
-        /* container principal */
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        /* cabeçalho */
         .header {
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .header h1 {
@@ -53,7 +51,7 @@
         }
 
         .header h1::after {
-            content: "📐";
+            content: "🌱";
             font-size: 2.5rem;
             background: none;
             color: #4a784a;
@@ -71,15 +69,13 @@
             backdrop-filter: blur(2px);
         }
 
-        /* grade de cards */
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
-        /* cada card de forma geométrica */
         .card {
             background: rgba(255, 255, 245, 0.95);
             backdrop-filter: blur(2px);
@@ -100,7 +96,7 @@
             display: flex;
             align-items: center;
             gap: 0.6rem;
-            font-size: 1.8rem;
+            font-size: 1.7rem;
             border-left: 6px solid #3c9e5c;
             padding-left: 1rem;
             margin-bottom: 1.5rem;
@@ -123,7 +119,7 @@
             gap: 6px;
         }
 
-        .input-group input {
+        .input-group input, .input-group select {
             padding: 0.75rem 1rem;
             font-size: 1rem;
             border: 1.5px solid #cde2bc;
@@ -134,7 +130,11 @@
             color: #1f3d2c;
         }
 
-        .input-group input:focus {
+        .input-group select {
+            cursor: pointer;
+        }
+
+        .input-group input:focus, .input-group select:focus {
             outline: none;
             border-color: #3c9e5c;
             box-shadow: 0 0 0 3px rgba(60, 158, 92, 0.2);
@@ -144,25 +144,40 @@
             background: #e6f1e0;
             border-radius: 1.4rem;
             padding: 0.8rem 1rem;
-            margin: 1.2rem 0 1rem;
+            margin: 1.2rem 0 0.5rem;
             text-align: center;
             font-weight: bold;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: #1d572f;
             border: 1px solid #bddba8;
         }
 
         .result-area span {
-            font-size: 1.7rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: #1a6e38;
         }
 
+        .seed-result {
+            background: #f5f0d7;
+            border-radius: 1.2rem;
+            padding: 0.7rem;
+            margin-top: 0.8rem;
+            text-align: center;
+            font-size: 1rem;
+            border-left: 4px solid #d4a11e;
+        }
+
+        .seed-result strong {
+            color: #b45f06;
+            font-size: 1.2rem;
+        }
+
         .unit-note {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #5b7c5a;
             text-align: center;
-            margin-top: 0.2rem;
+            margin-top: 0.3rem;
         }
 
         button {
@@ -189,9 +204,7 @@
             transform: scale(0.98);
         }
 
-        /* seção de conversão e dicas agronômicas */
         .info-panel {
-            background: #314e2cde;
             background: linear-gradient(115deg, #2b4d2e 0%, #1b3b23 100%);
             border-radius: 2rem;
             padding: 1.5rem 2rem;
@@ -252,7 +265,6 @@
 
         .tips-box {
             flex: 3;
-            background: #fefce8cc;
             background: #fff6dfd9;
             border-radius: 1.5rem;
             padding: 1rem 1.4rem;
@@ -280,7 +292,7 @@
 
         .footer {
             text-align: center;
-            margin-top: 3rem;
+            margin-top: 2.5rem;
             font-size: 0.8rem;
             color: #45734b;
             border-top: 1px solid #bbd6a5;
@@ -288,21 +300,11 @@
         }
 
         @media (max-width: 700px) {
-            body {
-                padding: 1rem;
-            }
-            .header h1 {
-                font-size: 2rem;
-            }
-            .card h2 {
-                font-size: 1.5rem;
-            }
+            body { padding: 1rem; }
+            .header h1 { font-size: 2rem; }
+            .card h2 { font-size: 1.4rem; }
         }
 
-        .destaque {
-            background: #deedd2;
-            border-radius: 12px;
-        }
         input[type=number] {
             -moz-appearance: textfield;
         }
@@ -315,12 +317,12 @@
 <body>
 <div class="container">
     <div class="header">
-        <h1>AgriCalc · Área & Campo</h1>
-        <div class="sub">🌱 Planeje com precisão: calcule áreas de talhões, pastagens e cultivos 🌽</div>
+        <h1>AgriCalc · Área & Sementes</h1>
+        <div class="sub">🌱 Calcule a área e descubra quantas sementes plantar 🌽</div>
     </div>
 
     <div class="grid-cards">
-        <!-- Retângulo / Quadrado (ideal para campos retangulares) -->
+        <!-- Retângulo / Quadrado -->
         <div class="card">
             <h2>📏 Retângulo / Quadrado</h2>
             <div class="input-group">
@@ -331,14 +333,27 @@
                 <label>📏 Largura (m)</label>
                 <input type="number" id="rectWidth" placeholder="Ex: 80" value="30" step="any">
             </div>
-            <button id="calcRect">🔢 Calcular Área</button>
+            <div class="input-group">
+                <label>🌾 Cultura:</label>
+                <select id="rectCrop">
+                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                </select>
+            </div>
+            <button id="calcRect">🔢 Calcular Área + Sementes</button>
             <div class="result-area" id="rectResult">
                 Área: <span>0,00</span> m²
             </div>
-            <div class="unit-note">↪ 1 hectare = 10.000 m² | 1 alqueire paulista ≅ 24.200 m²</div>
+            <div class="seed-result" id="rectSeed">
+                🌱 <strong>0</strong> sementes necessárias
+            </div>
+            <div class="unit-note">↪ 1 hectare = 10.000 m² | Base: sementes por hectare padrão</div>
         </div>
 
-        <!-- Triângulo (útil para áreas irregulares / encostas) -->
+        <!-- Triângulo -->
         <div class="card">
             <h2>🔺 Triângulo</h2>
             <div class="input-group">
@@ -349,28 +364,52 @@
                 <label>📐 Altura (m)</label>
                 <input type="number" id="triHeight" placeholder="Altura" value="25" step="any">
             </div>
-            <button id="calcTri">🌾 Calcular Área</button>
+            <div class="input-group">
+                <label>🌾 Cultura:</label>
+                <select id="triCrop">
+                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                </select>
+            </div>
+            <button id="calcTri">🌾 Calcular Área + Sementes</button>
             <div class="result-area" id="triResult">
                 Área: <span>0,00</span> m²
             </div>
-            <div class="unit-note">Fórmula: (base × altura) / 2</div>
+            <div class="seed-result" id="triSeed">
+                🌱 <strong>0</strong> sementes necessárias
+            </div>
         </div>
 
-        <!-- Círculo (tanques circulares, pivô central) -->
+        <!-- Círculo -->
         <div class="card">
-            <h2>⭕ Círculo (Pivô / Tanque)</h2>
+            <h2>⭕ Círculo (Pivô)</h2>
             <div class="input-group">
                 <label>📏 Raio (m)</label>
                 <input type="number" id="circleRadius" placeholder="Raio em metros" value="35" step="any">
             </div>
-            <button id="calcCircle">💧 Calcular Área</button>
+            <div class="input-group">
+                <label>🌾 Cultura:</label>
+                <select id="circleCrop">
+                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                </select>
+            </div>
+            <button id="calcCircle">💧 Calcular Área + Sementes</button>
             <div class="result-area" id="circleResult">
                 Área: <span>0,00</span> m²
             </div>
-            <div class="unit-note">Área = π × raio² | Aproximação π = 3.1416</div>
+            <div class="seed-result" id="circleSeed">
+                🌱 <strong>0</strong> sementes necessárias
+            </div>
         </div>
 
-        <!-- Trapézio (terrenos em declive, talhões trapezoidais) -->
+        <!-- Trapézio -->
         <div class="card">
             <h2>📐 Trapézio</h2>
             <div class="input-group">
@@ -385,15 +424,27 @@
                 <label>📐 Altura (m)</label>
                 <input type="number" id="trapHeight" placeholder="Altura" value="30" step="any">
             </div>
-            <button id="calcTrap">🌽 Calcular Área</button>
+            <div class="input-group">
+                <label>🌾 Cultura:</label>
+                <select id="trapCrop">
+                    <option value="milho">🌽 Milho (55.000 sementes/ha)</option>
+                    <option value="soja">🫘 Soja (320.000 sementes/ha)</option>
+                    <option value="feijao">🫘 Feijão (180.000 sementes/ha)</option>
+                    <option value="trigo">🌾 Trigo (250.000 sementes/ha)</option>
+                    <option value="algodao">🌿 Algodão (80.000 sementes/ha)</option>
+                </select>
+            </div>
+            <button id="calcTrap">🌽 Calcular Área + Sementes</button>
             <div class="result-area" id="trapResult">
                 Área: <span>0,00</span> m²
             </div>
-            <div class="unit-note">[(Base maior + base menor) × altura] / 2</div>
+            <div class="seed-result" id="trapSeed">
+                🌱 <strong>0</strong> sementes necessárias
+            </div>
         </div>
     </div>
 
-    <!-- Painel inteligente: conversor de unidades + dicas agrícolas -->
+    <!-- Painel de conversão + dicas agrícolas -->
     <div class="info-panel">
         <div class="converter-box">
             <h3>🔄 Conversor de Unidades</h3>
@@ -404,7 +455,7 @@
                 </div>
                 <div class="conv-input">
                     <label>Hectares (ha)</label>
-                    <input type="number" id="haInput" placeholder="ha" value="1" step="any" readonly style="background:#e2f0d9;">
+                    <input type="number" id="haInput" placeholder="ha" step="any" readonly style="background:#e2f0d9;">
                 </div>
                 <div class="conv-input">
                     <label>Alqueire Paulista</label>
@@ -420,21 +471,37 @@
         <div class="tips-box">
             <h3>🌿 Dicas para o Agricultor</h3>
             <ul>
-                <li>✅ <strong>Recomendação de sementes</strong>: para culturas como milho, use 50-60 mil sementes por hectare.</li>
+                <li>✅ <strong>Recomendação de sementes</strong>: Milho: 50-60 mil sementes/ha • Soja: 300-350 mil plantas/ha</li>
                 <li>💧 <strong>Irrigação por pivô</strong>: área circular com raio típico de 300 a 500 metros → até 78,5 hectares.</li>
-                <li>📊 <strong>Planejamento de insumos</strong>: calcule a área exata para otimizar fertilizantes e defensivos.</li>
+                <li>📊 <strong>Planejamento de sementes</strong>: use a área calculada para comprar a quantidade exata, evitando desperdício.</li>
                 <li>🧑‍🌾 <strong>Divisão de talhões</strong>: formas trapezoidais são comuns em terrenos com curvas de nível.</li>
-                <li>🌱 <strong>Taxa de semeadura</strong>: em média soja 300-350 mil plantas/ha, calcular área é essencial.</li>
+                <li>🌱 <strong>Taxa de semeadura</strong>: os valores consideram densidade média; ajuste conforme recomendação técnica local.</li>
             </ul>
         </div>
     </div>
     <div class="footer">
-        🌾 AgriCalc - Ferramenta para agricultura de precisão | Calcule áreas e converta para hectares/alqueires. Resultados em metros quadrados.
+        🌾 AgriCalc · Calcule área e quantidade de sementes para sua lavoura | Dados baseados em média nacional.
     </div>
 </div>
 
 <script>
-    // Funções auxiliares de atualização de conversor (baseado no m²)
+    // Dicionário de sementes por hectare (valores médios)
+    const sementesPorHa = {
+        milho: 55000,
+        soja: 320000,
+        feijao: 180000,
+        trigo: 250000,
+        algodao: 80000
+    };
+
+    // Função para calcular sementes com base na área (m²) e cultura
+    function calcularSementes(areaM2, cultura) {
+        let areaHa = areaM2 / 10000;
+        let sementes = areaHa * sementesPorHa[cultura];
+        return Math.round(sementes);
+    }
+
+    // Atualiza conversor de área
     function atualizarConversorArea(valorM2) {
         if (isNaN(valorM2) || valorM2 === null || valorM2 === "") valorM2 = 0;
         let m2 = parseFloat(valorM2);
@@ -448,7 +515,6 @@
         document.getElementById('alqMineiroInput').value = alqueireMineiro.toFixed(5);
     }
 
-    // captura eventos do input de m² para conversão manual também
     const sqmField = document.getElementById('sqmInput');
     sqmField.addEventListener('input', function(e) {
         let val = parseFloat(e.target.value);
@@ -459,54 +525,54 @@
         }
     });
 
-    // Inicializar conversor com valores padrões
-    function initConversor() {
-        atualizarConversorArea(10000);
-    }
+    let ultimaAreaM2 = 10000;
 
-    // Função para exibir resultado + atualizar conversor automaticamente de acordo com a última área calculada.
-    // Para melhor UX, vamos armazenar a última área em m² calculada em uma variável e atualizar conversor.
-    let ultimaAreaM2 = 10000; // valor default
-
-    function mostrarResultado(elementId, areaM2, forma) {
-        const spanEl = document.querySelector(`#${elementId} span`);
+    function mostrarResultadoComSementes(elementIdArea, elementIdSeed, areaM2, cultura) {
+        const spanEl = document.querySelector(`#${elementIdArea} span`);
         if (spanEl) {
             spanEl.innerText = areaM2.toFixed(2);
         }
-        // Atualiza conversor global sempre que um novo cálculo é feito (para integrar as unidades)
+        const sementes = calcularSementes(areaM2, cultura);
+        const seedDiv = document.getElementById(elementIdSeed);
+        if (seedDiv) {
+            seedDiv.innerHTML = `🌱 <strong>${sementes.toLocaleString('pt-BR')}</strong> sementes necessárias`;
+        }
         ultimaAreaM2 = areaM2;
         atualizarConversorArea(ultimaAreaM2);
     }
 
-    // --- Cálculo do Retângulo ---
+    // --- Retângulo ---
     function calcularRetangulo() {
         let comprimento = parseFloat(document.getElementById('rectLength').value);
         let largura = parseFloat(document.getElementById('rectWidth').value);
         if (isNaN(comprimento)) comprimento = 0;
         if (isNaN(largura)) largura = 0;
         let area = comprimento * largura;
-        mostrarResultado('rectResult', area, 'retangulo');
+        let cultura = document.getElementById('rectCrop').value;
+        mostrarResultadoComSementes('rectResult', 'rectSeed', area, cultura);
     }
 
-    // --- Cálculo do Triângulo ---
+    // --- Triângulo ---
     function calcularTriangulo() {
         let base = parseFloat(document.getElementById('triBase').value);
         let altura = parseFloat(document.getElementById('triHeight').value);
         if (isNaN(base)) base = 0;
         if (isNaN(altura)) altura = 0;
         let area = (base * altura) / 2;
-        mostrarResultado('triResult', area, 'triangulo');
+        let cultura = document.getElementById('triCrop').value;
+        mostrarResultadoComSementes('triResult', 'triSeed', area, cultura);
     }
 
-    // --- Cálculo do Círculo ---
+    // --- Círculo ---
     function calcularCirculo() {
         let raio = parseFloat(document.getElementById('circleRadius').value);
         if (isNaN(raio)) raio = 0;
         let area = Math.PI * raio * raio;
-        mostrarResultado('circleResult', area, 'circulo');
+        let cultura = document.getElementById('circleCrop').value;
+        mostrarResultadoComSementes('circleResult', 'circleSeed', area, cultura);
     }
 
-    // --- Cálculo do Trapézio ---
+    // --- Trapézio ---
     function calcularTrapezio() {
         let baseMaior = parseFloat(document.getElementById('trapBaseMaior').value);
         let baseMenor = parseFloat(document.getElementById('trapBaseMenor').value);
@@ -515,69 +581,55 @@
         if (isNaN(baseMenor)) baseMenor = 0;
         if (isNaN(altura)) altura = 0;
         let area = ((baseMaior + baseMenor) * altura) / 2;
-        mostrarResultado('trapResult', area, 'trapezio');
+        let cultura = document.getElementById('trapCrop').value;
+        mostrarResultadoComSementes('trapResult', 'trapSeed', area, cultura);
     }
 
-    // ---- Eventos dos botões ----
+    // Eventos dos botões
     document.getElementById('calcRect').addEventListener('click', calcularRetangulo);
     document.getElementById('calcTri').addEventListener('click', calcularTriangulo);
     document.getElementById('calcCircle').addEventListener('click', calcularCirculo);
     document.getElementById('calcTrap').addEventListener('click', calcularTrapezio);
 
-    // Inicializar conversor e também rodar cálculos padrão para mostrar áreas iniciais de exemplo
+    // Inicialização com valores padrão e exibição inicial
     function inicializarCalculosPadrao() {
-        // Retângulo default 50x30 = 1500 m²
         let comp = parseFloat(document.getElementById('rectLength').value);
         let larg = parseFloat(document.getElementById('rectWidth').value);
         if (!isNaN(comp) && !isNaN(larg)) {
             let areaRect = comp * larg;
-            mostrarResultado('rectResult', areaRect);
+            let culturaRect = document.getElementById('rectCrop').value;
+            mostrarResultadoComSementes('rectResult', 'rectSeed', areaRect, culturaRect);
         }
-        // Triângulo base 40 alt 25 => 500 m²
         let baseT = parseFloat(document.getElementById('triBase').value);
         let altT = parseFloat(document.getElementById('triHeight').value);
         if (!isNaN(baseT) && !isNaN(altT)) {
             let areaTri = (baseT * altT) / 2;
-            mostrarResultado('triResult', areaTri);
+            let culturaTri = document.getElementById('triCrop').value;
+            mostrarResultadoComSementes('triResult', 'triSeed', areaTri, culturaTri);
         }
-        // Círculo raio 35 => aprox 3848.45 m²
         let raioCirc = parseFloat(document.getElementById('circleRadius').value);
         if (!isNaN(raioCirc)) {
             let areaCirc = Math.PI * raioCirc * raioCirc;
-            mostrarResultado('circleResult', areaCirc);
+            let culturaCirc = document.getElementById('circleCrop').value;
+            mostrarResultadoComSementes('circleResult', 'circleSeed', areaCirc, culturaCirc);
         }
-        // Trapézio baseMaior 70, baseMenor 40, altura 30 => área (110*30)/2 = 1650 m²
         let bMaior = parseFloat(document.getElementById('trapBaseMaior').value);
         let bMenor = parseFloat(document.getElementById('trapBaseMenor').value);
         let altTrap = parseFloat(document.getElementById('trapHeight').value);
         if (!isNaN(bMaior) && !isNaN(bMenor) && !isNaN(altTrap)) {
             let areaTrap = ((bMaior + bMenor) * altTrap) / 2;
-            mostrarResultado('trapResult', areaTrap);
+            let culturaTrap = document.getElementById('trapCrop').value;
+            mostrarResultadoComSementes('trapResult', 'trapSeed', areaTrap, culturaTrap);
         }
-        // Sincroniza conversor com a última área calculada: por exemplo ultimaAreaM2 será referente ao último cálculo executado
-        // Vou definir como a área do retângulo por prioridade, mas a função mostrarResultado já atualiza via ultimaAreaM2.
-        // Como o ultimo a executar é trapézio, ficara 1650, mas para melhor harmonização forçamos uso do retângulo:
         let areaMain = (comp * larg);
         if (!isNaN(areaMain)) ultimaAreaM2 = areaMain;
         atualizarConversorArea(ultimaAreaM2);
     }
 
-    // Adicionar também eventos de input "Enter" suave: melhoraria experiência, mas o foco é clicar nos botões.
-    // Adicional: para sincronia manual, caso o usuário queira converter qualquer m² manual, já temos o input de m².
-    // Garantir que se o usuário digitar m² manualmente, o conversor mostre hectares/alqueires corretamente.
-    // Já implementado via evento 'input' no sqmField.
-
-    // Além disso, para facilitar, quando qualquer cálculo ocorre o m² no conversor é atualizado.
-    // Vamos também adicionar um indicador extra nos cards de hectare simplificado.
-
-    // Função para atualizar também os textos de conversão juntamente com tooltips intuitivos sem precisar recarregar.
+    // Enter para facilitar uso
     window.addEventListener('load', () => {
-        initConversor();
         inicializarCalculosPadrao();
-
-        // Extra: Adicionar validação para evitar NaN e atualizar automaticamente se algum campo relevante for alterado? 
-        // Opcionalmente podemos ouvir changes para atualizar automaticamente? vou manter estilo com botão para não sobrecarregar.
-        // Entretanto, incluímos pequena melhoria: ao pressionar Enter nos campos do card, fica amigável, mas sem exageros.
+        
         const inputsRect = ['rectLength', 'rectWidth'];
         inputsRect.forEach(id => {
             const el = document.getElementById(id);
@@ -597,6 +649,46 @@
         inputsTrap.forEach(id => {
             const el = document.getElementById(id);
             if (el) el.addEventListener('keypress', (e) => { if (e.key === 'Enter') calcularTrapezio(); });
+        });
+
+        // também permite alterar cultura e recalcular automaticamente? farei via botão, mas ao trocar cultura o resultado permanece? melhor manter botão.
+        // Adicional: quando mudar a cultura, se quiser atualizar com a área já exibida, podemos adicionar auto, mas vou manter simplicidade.
+        // bônus: listeners para updates de cultura com base na área atual
+        const rectCrop = document.getElementById('rectCrop');
+        rectCrop.addEventListener('change', () => {
+            let comp = parseFloat(document.getElementById('rectLength').value);
+            let larg = parseFloat(document.getElementById('rectWidth').value);
+            if (!isNaN(comp) && !isNaN(larg)) {
+                let area = comp * larg;
+                mostrarResultadoComSementes('rectResult', 'rectSeed', area, rectCrop.value);
+            }
+        });
+        const triCrop = document.getElementById('triCrop');
+        triCrop.addEventListener('change', () => {
+            let base = parseFloat(document.getElementById('triBase').value);
+            let alt = parseFloat(document.getElementById('triHeight').value);
+            if (!isNaN(base) && !isNaN(alt)) {
+                let area = (base * alt) / 2;
+                mostrarResultadoComSementes('triResult', 'triSeed', area, triCrop.value);
+            }
+        });
+        const circleCrop = document.getElementById('circleCrop');
+        circleCrop.addEventListener('change', () => {
+            let raio = parseFloat(document.getElementById('circleRadius').value);
+            if (!isNaN(raio)) {
+                let area = Math.PI * raio * raio;
+                mostrarResultadoComSementes('circleResult', 'circleSeed', area, circleCrop.value);
+            }
+        });
+        const trapCrop = document.getElementById('trapCrop');
+        trapCrop.addEventListener('change', () => {
+            let bMaior = parseFloat(document.getElementById('trapBaseMaior').value);
+            let bMenor = parseFloat(document.getElementById('trapBaseMenor').value);
+            let alt = parseFloat(document.getElementById('trapHeight').value);
+            if (!isNaN(bMaior) && !isNaN(bMenor) && !isNaN(alt)) {
+                let area = ((bMaior + bMenor) * alt) / 2;
+                mostrarResultadoComSementes('trapResult', 'trapSeed', area, trapCrop.value);
+            }
         });
     });
 </script>
