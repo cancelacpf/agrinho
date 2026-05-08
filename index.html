@@ -69,6 +69,94 @@
             backdrop-filter: blur(2px);
         }
 
+        /* Seção de Problemas e Soluções - AGORA NO TOPO (após header) */
+        .problems-section {
+            background: #fffef7;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #cfe2be;
+        }
+
+        .problems-section h2 {
+            font-size: 2rem;
+            color: #1b4d2a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid #d4a11e;
+            padding-left: 1rem;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #fef9e6, #f8f2df);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2d5b6;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background-color: #e2eccd;
+            color: #3c6e47;
+        }
+
+        .problem-content {
+            padding: 1.2rem 1.5rem 1.5rem;
+        }
+
+        .problem-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #b45f06;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .problem-content .problem-desc {
+            color: #9b4b1a;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #d4a11e;
+        }
+
+        .solution-desc {
+            color: #1a5d2c;
+            background: #eef5e6;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .solution-desc strong {
+            color: #2b6e3c;
+        }
+
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -159,7 +247,6 @@
         }
 
         .seed-result, .irrigation-result {
-            background: #f5f0d7;
             border-radius: 1.2rem;
             padding: 0.7rem;
             margin-top: 0.6rem;
@@ -168,6 +255,7 @@
         }
 
         .seed-result {
+            background: #f5f0d7;
             border-left: 4px solid #d4a11e;
         }
 
@@ -306,94 +394,6 @@
             margin: 6px 0;
         }
 
-        /* Seção de Problemas e Soluções com imagens */
-        .problems-section {
-            background: #fffef7;
-            border-radius: 2rem;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
-            border: 1px solid #cfe2be;
-        }
-
-        .problems-section h2 {
-            font-size: 2rem;
-            color: #1b4d2a;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 1.5rem;
-            border-left: 8px solid #d4a11e;
-            padding-left: 1rem;
-        }
-
-        .problems-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.8rem;
-        }
-
-        .problem-card {
-            background: linear-gradient(135deg, #fef9e6, #f8f2df);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2d5b6;
-        }
-
-        .problem-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .img-placeholder {
-            width: 100%;
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            background-color: #e2eccd;
-            color: #3c6e47;
-        }
-
-        .problem-content {
-            padding: 1.2rem 1.5rem 1.5rem;
-        }
-
-        .problem-content h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.8rem;
-            color: #b45f06;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .problem-content .problem-desc {
-            color: #9b4b1a;
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            padding-left: 0.5rem;
-            border-left: 3px solid #d4a11e;
-        }
-
-        .solution-desc {
-            color: #1a5d2c;
-            background: #eef5e6;
-            padding: 0.8rem;
-            border-radius: 1rem;
-            margin-top: 0.5rem;
-            font-size: 0.9rem;
-        }
-
-        .solution-desc strong {
-            color: #2b6e3c;
-        }
-
         .footer {
             text-align: center;
             margin-top: 2rem;
@@ -426,7 +426,80 @@
         <div class="sub">🌱 Calcule área, sementes e a quantidade de água para irrigar sua lavoura 💧</div>
     </div>
 
-    <!-- Cards de cálculo existentes -->
+    <!-- 🌟 SEÇÃO DE PROBLEMAS E SOLUÇÕES - MOVIDA PARA CIMA (conforme solicitado) 🌟 -->
+    <div class="problems-section">
+        <h2>🚜 Problemas & Soluções Inteligentes no Plantio</h2>
+        <div class="problems-grid">
+            
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #c9d99e, #b3cc7a);">
+                    🌍🧪
+                </div>
+                <div class="problem-content">
+                    <h3>⚠️ Solo Compactado</h3>
+                    <div class="problem-desc">Problema: Dificuldade de penetração de raízes e baixa infiltração de água.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Utilize escarificação mecânica e rotação de culturas (plantio de aveia preta ou nabo forrageiro). Adicione matéria orgânica e pratique o plantio direto com cobertura vegetal.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #d9b48b, #c4975f);">
+                    🐛🦗
+                </div>
+                <div class="problem-content">
+                    <h3>🐛 Pragas Agrícolas</h3>
+                    <div class="problem-desc">Problema: Ataque de lagartas, percevejos e pulgões reduzindo produtividade.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Manejo Integrado de Pragas (MIP): monitoramento constante, uso de inimigos naturais (joaninhas, vespas) e rotação de princípios ativos. Adote Bacillus thuringiensis para lagartas.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #8fc5b0, #5e9c80);">
+                    💧🌾
+                </div>
+                <div class="problem-content">
+                    <h3>💦 Estresse Hídrico</h3>
+                    <div class="problem-desc">Problema: Seca prolongada ou irrigação mal dimensionada -> perda de produção.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Implementar irrigação por gotejamento ou pivô central com base na necessidade real (calcule acima!). Mulching (cobertura morta) reduz evaporação e retém umidade.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #e6cba0, #dbb660);">
+                    🧫🍂
+                </div>
+                <div class="problem-content">
+                    <h3>🍄 Doenças Fúngicas</h3>
+                    <div class="problem-desc">Problema: Ferrugem, oídio e manchas foliares comprometem a fotossíntese.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Escolha variedades resistentes, faça rotação de culturas e aplique fungicidas preventivos (triazóis + estrobilurinas). Elimine restos culturais.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #b5cf99, #98b87a);">
+                    🌱📉
+                </div>
+                <div class="problem-content">
+                    <h3>📉 Baixa Germinação</h3>
+                    <div class="problem-desc">Problema: Sementes de má qualidade ou plantio na profundidade incorreta.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Utilize sementes certificadas e com alto poder germinativo. Ajuste a profundidade (3-5 cm para soja/milho). Tratamento de sementes com fungicida + inoculante.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #c9ae8c, #b38854);">
+                    🧂⚖️
+                </div>
+                <div class="problem-content">
+                    <h3>🧂 Salinização do Solo</h3>
+                    <div class="problem-desc">Problema: Acúmulo de sais por irrigação excessiva ou água salina.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Lixiviação com lâminas extras de água, gesso agrícola para melhorar a permeabilidade e cultivares tolerantes (sorgo, cevada).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards de cálculo existentes (ABAIXO da seção de problemas) -->
     <div class="grid-cards">
         <div class="card">
             <h2>📏 Retângulo / Quadrado</h2>
@@ -554,79 +627,6 @@
             </div>
             <div class="irrigation-result" id="trapIrrigation">
                 💧 <strong>0</strong> litros de água por ciclo
-            </div>
-        </div>
-    </div>
-
-    <!-- 🌟 NOVA SEÇÃO: Problemas e Soluções no Plantio com Imagens 🌟 -->
-    <div class="problems-section">
-        <h2>🚜 Problemas & Soluções Inteligentes no Plantio</h2>
-        <div class="problems-grid">
-            
-            <div class="problem-card">
-                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #c9d99e, #b3cc7a);">
-                    🌍🧪
-                </div>
-                <div class="problem-content">
-                    <h3>⚠️ Solo Compactado</h3>
-                    <div class="problem-desc">Problema: Dificuldade de penetração de raízes e baixa infiltração de água.</div>
-                    <div class="solution-desc"><strong>✅ Solução:</strong> Utilize escarificação mecânica e rotação de culturas (plantio de aveia preta ou nabo forrageiro). Adicione matéria orgânica e pratique o plantio direto com cobertura vegetal.</div>
-                </div>
-            </div>
-
-            <div class="problem-card">
-                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #d9b48b, #c4975f);">
-                    🐛🦗
-                </div>
-                <div class="problem-content">
-                    <h3>🐛 Pragas Agrícolas</h3>
-                    <div class="problem-desc">Problema: Ataque de lagartas, percevejos e pulgões reduzindo produtividade.</div>
-                    <div class="solution-desc"><strong>✅ Solução:</strong> Manejo Integrado de Pragas (MIP): monitoramento constante, uso de inimigos naturais (joaninhas, vespas) e rotação de princípios ativos. Adote Bacillus thuringiensis para lagartas.</div>
-                </div>
-            </div>
-
-            <div class="problem-card">
-                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #8fc5b0, #5e9c80);">
-                    💧🌾
-                </div>
-                <div class="problem-content">
-                    <h3>💦 Estresse Hídrico</h3>
-                    <div class="problem-desc">Problema: Seca prolongada ou irrigação mal dimensionada -> perda de produção.</div>
-                    <div class="solution-desc"><strong>✅ Solução:</strong> Implementar irrigação por gotejamento ou pivô central com base na necessidade real (calcule acima!). Mulching (cobertura morta) reduz evaporação e retém umidade.</div>
-                </div>
-            </div>
-
-            <div class="problem-card">
-                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #e6cba0, #dbb660);">
-                    🧫🍂
-                </div>
-                <div class="problem-content">
-                    <h3>🍄 Doenças Fúngicas</h3>
-                    <div class="problem-desc">Problema: Ferrugem, oídio e manchas foliares comprometem a fotossíntese.</div>
-                    <div class="solution-desc"><strong>✅ Solução:</strong> Escolha variedades resistentes, faça rotação de culturas e aplique fungicidas preventivos (triazóis + estrobilurinas). Elimine restos culturais.</div>
-                </div>
-            </div>
-
-            <div class="problem-card">
-                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #b5cf99, #98b87a);">
-                    🌱📉
-                </div>
-                <div class="problem-content">
-                    <h3>📉 Baixa Germinação</h3>
-                    <div class="problem-desc">Problema: Sementes de má qualidade ou plantio na profundidade incorreta.</div>
-                    <div class="solution-desc"><strong>✅ Solução:</strong> Utilize sementes certificadas e com alto poder germinativo. Ajuste a profundidade (3-5 cm para soja/milho). Tratamento de sementes com fungicida + inoculante.</div>
-                </div>
-            </div>
-
-            <div class="problem-card">
-                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #c9ae8c, #b38854);">
-                    🧂⚖️
-                </div>
-                <div class="problem-content">
-                    <h3>🧂 Salinização do Solo</h3>
-                    <div class="problem-desc">Problema: Acúmulo de sais por irrigação excessiva ou água salina.</div>
-                    <div class="solution-desc"><strong>✅ Solução:</strong> Lixiviação com lâminas extras de água, gesso agrícola para melhorar a permeabilidade e cultivares tolerantes (sorgo, cevada).</div>
-                </div>
             </div>
         </div>
     </div>
@@ -764,7 +764,4 @@
         // Eventos de cultura ao trocar
         const updates = ['rectCrop', 'triCrop', 'circleCrop', 'trapCrop'];
         updates.forEach(id => {
-            document.getElementById(id).addEventListener('change', function() {
-                if (id === 'rectCrop') document.getElementById('calcRect').click();
-                if (id === 'triCrop') document.getElementById('calcTri').click();
-                if (id === 'circleCrop') document.getElementById('calcCircle
+            document.getElementById
