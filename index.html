@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AgriCalc Pro | Área + Sementes + Irrigação</title>
+    <title>AgriCalc Pro | Área + Sementes + Irrigação + Soluções</title>
     <style>
         * {
             margin: 0;
@@ -229,6 +229,7 @@
             justify-content: space-between;
             gap: 1.5rem;
             margin-top: 1rem;
+            margin-bottom: 2rem;
             box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
         }
 
@@ -305,9 +306,97 @@
             margin: 6px 0;
         }
 
+        /* Seção de Problemas e Soluções com imagens */
+        .problems-section {
+            background: #fffef7;
+            border-radius: 2rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #cfe2be;
+        }
+
+        .problems-section h2 {
+            font-size: 2rem;
+            color: #1b4d2a;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid #d4a11e;
+            padding-left: 1rem;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .problem-card {
+            background: linear-gradient(135deg, #fef9e6, #f8f2df);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2d5b6;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .img-placeholder {
+            width: 100%;
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            background-color: #e2eccd;
+            color: #3c6e47;
+        }
+
+        .problem-content {
+            padding: 1.2rem 1.5rem 1.5rem;
+        }
+
+        .problem-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #b45f06;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .problem-content .problem-desc {
+            color: #9b4b1a;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+            border-left: 3px solid #d4a11e;
+        }
+
+        .solution-desc {
+            color: #1a5d2c;
+            background: #eef5e6;
+            padding: 0.8rem;
+            border-radius: 1rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .solution-desc strong {
+            color: #2b6e3c;
+        }
+
         .footer {
             text-align: center;
-            margin-top: 2.5rem;
+            margin-top: 2rem;
             font-size: 0.8rem;
             color: #45734b;
             border-top: 1px solid #bbd6a5;
@@ -318,6 +407,7 @@
             body { padding: 1rem; }
             .header h1 { font-size: 2rem; }
             .card h2 { font-size: 1.4rem; }
+            .problems-section h2 { font-size: 1.5rem; }
         }
 
         input[type=number] {
@@ -336,8 +426,8 @@
         <div class="sub">🌱 Calcule área, sementes e a quantidade de água para irrigar sua lavoura 💧</div>
     </div>
 
+    <!-- Cards de cálculo existentes -->
     <div class="grid-cards">
-        <!-- Retângulo / Quadrado -->
         <div class="card">
             <h2>📏 Retângulo / Quadrado</h2>
             <div class="input-group">
@@ -371,7 +461,6 @@
             <div class="unit-note">↪ 1 hectare = 10.000 m² | Irrigação baseada na necessidade hídrica da cultura</div>
         </div>
 
-        <!-- Triângulo -->
         <div class="card">
             <h2>🔺 Triângulo</h2>
             <div class="input-group">
@@ -404,7 +493,6 @@
             </div>
         </div>
 
-        <!-- Círculo -->
         <div class="card">
             <h2>⭕ Círculo (Pivô)</h2>
             <div class="input-group">
@@ -433,7 +521,6 @@
             </div>
         </div>
 
-        <!-- Trapézio -->
         <div class="card">
             <h2>📐 Trapézio</h2>
             <div class="input-group">
@@ -471,7 +558,79 @@
         </div>
     </div>
 
-    <!-- Painel de conversão + dicas agrícolas -->
+    <!-- 🌟 NOVA SEÇÃO: Problemas e Soluções no Plantio com Imagens 🌟 -->
+    <div class="problems-section">
+        <h2>🚜 Problemas & Soluções Inteligentes no Plantio</h2>
+        <div class="problems-grid">
+            
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #c9d99e, #b3cc7a);">
+                    🌍🧪
+                </div>
+                <div class="problem-content">
+                    <h3>⚠️ Solo Compactado</h3>
+                    <div class="problem-desc">Problema: Dificuldade de penetração de raízes e baixa infiltração de água.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Utilize escarificação mecânica e rotação de culturas (plantio de aveia preta ou nabo forrageiro). Adicione matéria orgânica e pratique o plantio direto com cobertura vegetal.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #d9b48b, #c4975f);">
+                    🐛🦗
+                </div>
+                <div class="problem-content">
+                    <h3>🐛 Pragas Agrícolas</h3>
+                    <div class="problem-desc">Problema: Ataque de lagartas, percevejos e pulgões reduzindo produtividade.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Manejo Integrado de Pragas (MIP): monitoramento constante, uso de inimigos naturais (joaninhas, vespas) e rotação de princípios ativos. Adote Bacillus thuringiensis para lagartas.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #8fc5b0, #5e9c80);">
+                    💧🌾
+                </div>
+                <div class="problem-content">
+                    <h3>💦 Estresse Hídrico</h3>
+                    <div class="problem-desc">Problema: Seca prolongada ou irrigação mal dimensionada -> perda de produção.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Implementar irrigação por gotejamento ou pivô central com base na necessidade real (calcule acima!). Mulching (cobertura morta) reduz evaporação e retém umidade.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #e6cba0, #dbb660);">
+                    🧫🍂
+                </div>
+                <div class="problem-content">
+                    <h3>🍄 Doenças Fúngicas</h3>
+                    <div class="problem-desc">Problema: Ferrugem, oídio e manchas foliares comprometem a fotossíntese.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Escolha variedades resistentes, faça rotação de culturas e aplique fungicidas preventivos (triazóis + estrobilurinas). Elimine restos culturais.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #b5cf99, #98b87a);">
+                    🌱📉
+                </div>
+                <div class="problem-content">
+                    <h3>📉 Baixa Germinação</h3>
+                    <div class="problem-desc">Problema: Sementes de má qualidade ou plantio na profundidade incorreta.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Utilize sementes certificadas e com alto poder germinativo. Ajuste a profundidade (3-5 cm para soja/milho). Tratamento de sementes com fungicida + inoculante.</div>
+                </div>
+            </div>
+
+            <div class="problem-card">
+                <div class="img-placeholder" style="background-image: linear-gradient(120deg, #c9ae8c, #b38854);">
+                    🧂⚖️
+                </div>
+                <div class="problem-content">
+                    <h3>🧂 Salinização do Solo</h3>
+                    <div class="problem-desc">Problema: Acúmulo de sais por irrigação excessiva ou água salina.</div>
+                    <div class="solution-desc"><strong>✅ Solução:</strong> Lixiviação com lâminas extras de água, gesso agrícola para melhorar a permeabilidade e cultivares tolerantes (sorgo, cevada).</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="info-panel">
         <div class="converter-box">
             <h3>🔄 Conversor de Unidades</h3>
@@ -506,13 +665,13 @@
             </ul>
         </div>
     </div>
+    
     <div class="footer">
-        🌾 AgriCalc Pro · Calcule área, sementes e água necessária para irrigação | Dados baseados em médias nacionais.
+        🌾 AgriCalc Pro · Calcule área, sementes e água necessária para irrigação | Dados baseados em médias nacionais | 🌟 Seção de problemas e soluções com práticas regenerativas.
     </div>
 </div>
 
 <script>
-    // Dicionário de sementes por hectare e necessidade hídrica (mm por ciclo)
     const culturasData = {
         milho: { sementes: 55000, aguaMm: 500 },
         soja: { sementes: 320000, aguaMm: 450 },
@@ -521,231 +680,91 @@
         algodao: { sementes: 80000, aguaMm: 700 }
     };
 
-    // Função para calcular sementes
     function calcularSementes(areaM2, cultura) {
         let areaHa = areaM2 / 10000;
-        let sementes = areaHa * culturasData[cultura].sementes;
-        return Math.round(sementes);
+        return Math.round(areaHa * culturasData[cultura].sementes);
     }
 
-    // Função para calcular água necessária (litros)
-    // 1 mm de lâmina d'água sobre 1 hectare = 10.000 litros
-    // Logo: litros = areaHa * aguaMm * 10000
     function calcularAguaLitros(areaM2, cultura) {
         let areaHa = areaM2 / 10000;
-        let aguaMm = culturasData[cultura].aguaMm;
-        let litros = areaHa * aguaMm * 10000;
-        return Math.round(litros);
+        return Math.round(areaHa * culturasData[cultura].aguaMm * 10000);
     }
 
-    // Formatar litros para exibição (milhões, milhares)
     function formatarLitros(litros) {
-        if (litros >= 1000000) {
-            return (litros / 1000000).toFixed(2) + " milhões";
-        }
-        if (litros >= 1000) {
-            return (litros / 1000).toFixed(1) + " mil";
-        }
+        if (litros >= 1000000) return (litros / 1000000).toFixed(2) + " milhões";
+        if (litros >= 1000) return (litros / 1000).toFixed(1) + " mil";
         return litros.toString();
     }
 
-    // Atualiza conversor de área
     function atualizarConversorArea(valorM2) {
-        if (isNaN(valorM2) || valorM2 === null || valorM2 === "") valorM2 = 0;
         let m2 = parseFloat(valorM2);
         if (isNaN(m2)) m2 = 0;
         document.getElementById('sqmInput').value = m2.toFixed(2);
-        let hectares = m2 / 10000;
-        document.getElementById('haInput').value = hectares.toFixed(5);
-        let alqueirePaulista = m2 / 24200;
-        document.getElementById('alqInput').value = alqueirePaulista.toFixed(5);
-        let alqueireMineiro = m2 / 48400;
-        document.getElementById('alqMineiroInput').value = alqueireMineiro.toFixed(5);
+        document.getElementById('haInput').value = (m2 / 10000).toFixed(5);
+        document.getElementById('alqInput').value = (m2 / 24200).toFixed(5);
+        document.getElementById('alqMineiroInput').value = (m2 / 48400).toFixed(5);
     }
-
-    const sqmField = document.getElementById('sqmInput');
-    sqmField.addEventListener('input', function(e) {
-        let val = parseFloat(e.target.value);
-        if (!isNaN(val)) {
-            atualizarConversorArea(val);
-        } else {
-            atualizarConversorArea(0);
-        }
-    });
-
-    let ultimaAreaM2 = 10000;
 
     function mostrarResultadosCompletos(elementIdArea, elementIdSeed, elementIdIrrigation, areaM2, cultura) {
         const spanEl = document.querySelector(`#${elementIdArea} span`);
-        if (spanEl) {
-            spanEl.innerText = areaM2.toFixed(2);
-        }
+        if (spanEl) spanEl.innerText = areaM2.toFixed(2);
         
         const sementes = calcularSementes(areaM2, cultura);
         const seedDiv = document.getElementById(elementIdSeed);
-        if (seedDiv) {
-            seedDiv.innerHTML = `🌱 <strong>${sementes.toLocaleString('pt-BR')}</strong> sementes necessárias`;
-        }
+        if (seedDiv) seedDiv.innerHTML = `🌱 <strong>${sementes.toLocaleString('pt-BR')}</strong> sementes necessárias`;
         
         const litros = calcularAguaLitros(areaM2, cultura);
         const irrigationDiv = document.getElementById(elementIdIrrigation);
         if (irrigationDiv) {
-            let litrosFormatado = formatarLitros(litros);
-            irrigationDiv.innerHTML = `💧 <strong>${litros.toLocaleString('pt-BR')}</strong> litros <span style="font-size:0.8rem;">(${litrosFormatado})</span><br><span style="font-size:0.7rem;">${culturasData[cultura].aguaMm} mm de lâmina d'água por ciclo</span>`;
+            irrigationDiv.innerHTML = `💧 <strong>${litros.toLocaleString('pt-BR')}</strong> litros <span style="font-size:0.8rem;">(${formatarLitros(litros)})</span><br><span style="font-size:0.7rem;">${culturasData[cultura].aguaMm} mm de lâmina d'água por ciclo</span>`;
         }
-        
-        ultimaAreaM2 = areaM2;
-        atualizarConversorArea(ultimaAreaM2);
+        atualizarConversorArea(areaM2);
     }
 
-    // --- Retângulo ---
-    function calcularRetangulo() {
-        let comprimento = parseFloat(document.getElementById('rectLength').value);
-        let largura = parseFloat(document.getElementById('rectWidth').value);
-        if (isNaN(comprimento)) comprimento = 0;
-        if (isNaN(largura)) largura = 0;
-        let area = comprimento * largura;
-        let cultura = document.getElementById('rectCrop').value;
-        mostrarResultadosCompletos('rectResult', 'rectSeed', 'rectIrrigation', area, cultura);
-    }
-
-    // --- Triângulo ---
-    function calcularTriangulo() {
-        let base = parseFloat(document.getElementById('triBase').value);
-        let altura = parseFloat(document.getElementById('triHeight').value);
-        if (isNaN(base)) base = 0;
-        if (isNaN(altura)) altura = 0;
-        let area = (base * altura) / 2;
-        let cultura = document.getElementById('triCrop').value;
-        mostrarResultadosCompletos('triResult', 'triSeed', 'triIrrigation', area, cultura);
-    }
-
-    // --- Círculo ---
-    function calcularCirculo() {
-        let raio = parseFloat(document.getElementById('circleRadius').value);
-        if (isNaN(raio)) raio = 0;
-        let area = Math.PI * raio * raio;
-        let cultura = document.getElementById('circleCrop').value;
-        mostrarResultadosCompletos('circleResult', 'circleSeed', 'circleIrrigation', area, cultura);
-    }
-
-    // --- Trapézio ---
-    function calcularTrapezio() {
-        let baseMaior = parseFloat(document.getElementById('trapBaseMaior').value);
-        let baseMenor = parseFloat(document.getElementById('trapBaseMenor').value);
-        let altura = parseFloat(document.getElementById('trapHeight').value);
-        if (isNaN(baseMaior)) baseMaior = 0;
-        if (isNaN(baseMenor)) baseMenor = 0;
-        if (isNaN(altura)) altura = 0;
-        let area = ((baseMaior + baseMenor) * altura) / 2;
-        let cultura = document.getElementById('trapCrop').value;
-        mostrarResultadosCompletos('trapResult', 'trapSeed', 'trapIrrigation', area, cultura);
-    }
-
-    // Eventos dos botões
-    document.getElementById('calcRect').addEventListener('click', calcularRetangulo);
-    document.getElementById('calcTri').addEventListener('click', calcularTriangulo);
-    document.getElementById('calcCircle').addEventListener('click', calcularCirculo);
-    document.getElementById('calcTrap').addEventListener('click', calcularTrapezio);
-
-    // Inicialização com valores padrão
-    function inicializarCalculosPadrao() {
-        let comp = parseFloat(document.getElementById('rectLength').value);
-        let larg = parseFloat(document.getElementById('rectWidth').value);
-        if (!isNaN(comp) && !isNaN(larg)) {
-            let areaRect = comp * larg;
-            let culturaRect = document.getElementById('rectCrop').value;
-            mostrarResultadosCompletos('rectResult', 'rectSeed', 'rectIrrigation', areaRect, culturaRect);
-        }
-        let baseT = parseFloat(document.getElementById('triBase').value);
-        let altT = parseFloat(document.getElementById('triHeight').value);
-        if (!isNaN(baseT) && !isNaN(altT)) {
-            let areaTri = (baseT * altT) / 2;
-            let culturaTri = document.getElementById('triCrop').value;
-            mostrarResultadosCompletos('triResult', 'triSeed', 'triIrrigation', areaTri, culturaTri);
-        }
-        let raioCirc = parseFloat(document.getElementById('circleRadius').value);
-        if (!isNaN(raioCirc)) {
-            let areaCirc = Math.PI * raioCirc * raioCirc;
-            let culturaCirc = document.getElementById('circleCrop').value;
-            mostrarResultadosCompletos('circleResult', 'circleSeed', 'circleIrrigation', areaCirc, culturaCirc);
-        }
-        let bMaior = parseFloat(document.getElementById('trapBaseMaior').value);
-        let bMenor = parseFloat(document.getElementById('trapBaseMenor').value);
-        let altTrap = parseFloat(document.getElementById('trapHeight').value);
-        if (!isNaN(bMaior) && !isNaN(bMenor) && !isNaN(altTrap)) {
-            let areaTrap = ((bMaior + bMenor) * altTrap) / 2;
-            let culturaTrap = document.getElementById('trapCrop').value;
-            mostrarResultadosCompletos('trapResult', 'trapSeed', 'trapIrrigation', areaTrap, culturaTrap);
-        }
-        let areaMain = (comp * larg);
-        if (!isNaN(areaMain)) ultimaAreaM2 = areaMain;
-        atualizarConversorArea(ultimaAreaM2);
-    }
-
-    // Enter para facilitar uso
-    window.addEventListener('load', () => {
-        inicializarCalculosPadrao();
-        
-        const inputsRect = ['rectLength', 'rectWidth'];
-        inputsRect.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('keypress', (e) => { if (e.key === 'Enter') calcularRetangulo(); });
-        });
-        const inputsTri = ['triBase', 'triHeight'];
-        inputsTri.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('keypress', (e) => { if (e.key === 'Enter') calcularTriangulo(); });
-        });
-        const inputsCirc = ['circleRadius'];
-        inputsCirc.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('keypress', (e) => { if (e.key === 'Enter') calcularCirculo(); });
-        });
-        const inputsTrap = ['trapBaseMaior', 'trapBaseMenor', 'trapHeight'];
-        inputsTrap.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('keypress', (e) => { if (e.key === 'Enter') calcularTrapezio(); });
-        });
-
-        // Listeners para mudança de cultura - atualiza automaticamente
-        const rectCrop = document.getElementById('rectCrop');
-        rectCrop.addEventListener('change', () => {
-            let comp = parseFloat(document.getElementById('rectLength').value);
-            let larg = parseFloat(document.getElementById('rectWidth').value);
-            if (!isNaN(comp) && !isNaN(larg)) {
-                let area = comp * larg;
-                mostrarResultadosCompletos('rectResult', 'rectSeed', 'rectIrrigation', area, rectCrop.value);
-            }
-        });
-        const triCrop = document.getElementById('triCrop');
-        triCrop.addEventListener('change', () => {
-            let base = parseFloat(document.getElementById('triBase').value);
-            let alt = parseFloat(document.getElementById('triHeight').value);
-            if (!isNaN(base) && !isNaN(alt)) {
-                let area = (base * alt) / 2;
-                mostrarResultadosCompletos('triResult', 'triSeed', 'triIrrigation', area, triCrop.value);
-            }
-        });
-        const circleCrop = document.getElementById('circleCrop');
-        circleCrop.addEventListener('change', () => {
-            let raio = parseFloat(document.getElementById('circleRadius').value);
-            if (!isNaN(raio)) {
-                let area = Math.PI * raio * raio;
-                mostrarResultadosCompletos('circleResult', 'circleSeed', 'circleIrrigation', area, circleCrop.value);
-            }
-        });
-        const trapCrop = document.getElementById('trapCrop');
-        trapCrop.addEventListener('change', () => {
-            let bMaior = parseFloat(document.getElementById('trapBaseMaior').value);
-            let bMenor = parseFloat(document.getElementById('trapBaseMenor').value);
-            let alt = parseFloat(document.getElementById('trapHeight').value);
-            if (!isNaN(bMaior) && !isNaN(bMenor) && !isNaN(alt)) {
-                let area = ((bMaior + bMenor) * alt) / 2;
-                mostrarResultadosCompletos('trapResult', 'trapSeed', 'trapIrrigation', area, trapCrop.value);
-            }
-        });
+    // Eventos e cálculos para cada forma
+    document.getElementById('calcRect').addEventListener('click', () => {
+        let comp = parseFloat(document.getElementById('rectLength').value) || 0;
+        let larg = parseFloat(document.getElementById('rectWidth').value) || 0;
+        let area = comp * larg;
+        mostrarResultadosCompletos('rectResult', 'rectSeed', 'rectIrrigation', area, document.getElementById('rectCrop').value);
     });
-</script>
-</body>
-</html>
+    document.getElementById('calcTri').addEventListener('click', () => {
+        let base = parseFloat(document.getElementById('triBase').value) || 0;
+        let alt = parseFloat(document.getElementById('triHeight').value) || 0;
+        let area = (base * alt) / 2;
+        mostrarResultadosCompletos('triResult', 'triSeed', 'triIrrigation', area, document.getElementById('triCrop').value);
+    });
+    document.getElementById('calcCircle').addEventListener('click', () => {
+        let raio = parseFloat(document.getElementById('circleRadius').value) || 0;
+        let area = Math.PI * raio * raio;
+        mostrarResultadosCompletos('circleResult', 'circleSeed', 'circleIrrigation', area, document.getElementById('circleCrop').value);
+    });
+    document.getElementById('calcTrap').addEventListener('click', () => {
+        let bMaior = parseFloat(document.getElementById('trapBaseMaior').value) || 0;
+        let bMenor = parseFloat(document.getElementById('trapBaseMenor').value) || 0;
+        let alt = parseFloat(document.getElementById('trapHeight').value) || 0;
+        let area = ((bMaior + bMenor) * alt) / 2;
+        mostrarResultadosCompletos('trapResult', 'trapSeed', 'trapIrrigation', area, document.getElementById('trapCrop').value);
+    });
+
+    // Conversor dinâmico
+    const sqmField = document.getElementById('sqmInput');
+    sqmField.addEventListener('input', (e) => {
+        let val = parseFloat(e.target.value);
+        if (!isNaN(val)) atualizarConversorArea(val);
+        else atualizarConversorArea(0);
+    });
+
+    // Inicialização
+    window.addEventListener('load', () => {
+        document.getElementById('calcRect').click();
+        document.getElementById('calcTri').click();
+        document.getElementById('calcCircle').click();
+        document.getElementById('calcTrap').click();
+        // Eventos de cultura ao trocar
+        const updates = ['rectCrop', 'triCrop', 'circleCrop', 'trapCrop'];
+        updates.forEach(id => {
+            document.getElementById(id).addEventListener('change', function() {
+                if (id === 'rectCrop') document.getElementById('calcRect').click();
+                if (id === 'triCrop') document.getElementById('calcTri').click();
+                if (id === 'circleCrop') document.getElementById('calcCircle
